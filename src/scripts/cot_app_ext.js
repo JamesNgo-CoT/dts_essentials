@@ -7,7 +7,7 @@ cot_app.prototype.setTitle = ((setTitle) => function(title, focus = true) {
 
   document.title = title;
 
-  if (focus !== false) {
+  if (this.titleElement && focus !== false) {
     this.titleElement.focus();
   }
 
