@@ -5,7 +5,7 @@
 
 $(function () {
   if (window['cot_app']) { //the code in this 'if' block should be deleted for embedded apps
-    const app = new cot_app("dts_essentials",{
+    const app = window.app = new cot_app("dts_essentials",{
       hasContentTop: false,
       hasContentBottom: false,
       hasContentRight: false,
