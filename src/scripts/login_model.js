@@ -3,7 +3,7 @@ const LoginModel = Backbone.Model.extend({
   // PROPERTY DEFINITION
 
   localStorageKey: function() {
-    return `${this.app} login sid`
+    return `${this.app} login sid`;
   },
 
   localStorageValue: function() {
@@ -20,7 +20,7 @@ const LoginModel = Backbone.Model.extend({
         this.reLogin().then(() => {
           resolve(this.isLoggedIn());
         }, (error) => {
-          reject(error)
+          reject(error);
         })
       } else {
         resolve(false);
