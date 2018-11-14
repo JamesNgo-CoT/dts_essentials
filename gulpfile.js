@@ -5,7 +5,7 @@ const pkg = require('./package.json');
 core.embeddedApp.createTasks(gulp, {
   pkg,
   embedArea: 'full',
-  environmentOverride: null,
+  environmentOverride: 'prod',
   deploymentPath: '',
   preprocessorContext: {
     local: {},

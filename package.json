@@ -47,7 +47,7 @@
     "includeJQueryMaskedInput": true,
     "includePlaceholders": true,
     "includeMultiSelect": true,
-    "includeMap": true,
+    "includeMap": false,
     "includeFullCalendar": true,
     "includeDatePicker": true,
     "includeLogin": true,
