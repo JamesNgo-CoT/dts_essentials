@@ -1,0 +1,23 @@
+#maincontent .login-page-view {
+  form {
+    .panel {
+      margin-bottom: 0.5rem;
+
+      .panel-body {
+        padding: 1rem 1rem 0.5rem 1rem;
+
+        .form-group {
+          margin-bottom: 1rem;
+
+          .alert {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}

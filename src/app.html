@@ -9,6 +9,8 @@ See examples below in the boilerplate code
 <!-- core:css -->
 <!-- endinject -->
 <!-- place your application stylesheet references here: -->
+<link rel="stylesheet" type="text/css" href="<!-- @echo SRC_PATH -->/styles/loginpage_view.css">
+
 <link rel="stylesheet" type="text/css" href="<!-- @echo SRC_PATH -->/styles/main.css">
 <!-- endbuild -->
 <!--@exec startBuildTagWithCacheBuster('styles/core_print.css', 'media="print"')-->
@@ -27,9 +29,15 @@ See examples below in the boilerplate code
 <!-- core:js -->
 <!-- endinject -->
 <!-- place your application script references here: -->
+<script src="<!-- @echo SRC_PATH -->/scripts/base_router.js"></script>
 <script src="<!-- @echo SRC_PATH -->/scripts/cot_app_extention.js"></script>
 <script src="<!-- @echo SRC_PATH -->/scripts/cot_form_extention.js"></script>
+<script src="<!-- @echo SRC_PATH -->/scripts/jquery_ajax_datafilter.js"></script>
 <script src="<!-- @echo SRC_PATH -->/scripts/login_model.js"></script>
+<script src="<!-- @echo SRC_PATH -->/scripts/loginbarcontrol_view.js"></script>
+<script src="<!-- @echo SRC_PATH -->/scripts/loginpage_router.js"></script>
+<script src="<!-- @echo SRC_PATH -->/scripts/loginpage_view.js"></script>
+<script src="<!-- @echo SRC_PATH -->/scripts/util.js"></script>
 
 <script type="text/javascript" src="<!-- @echo SRC_PATH -->/scripts/main.js"></script>
 <!-- endbuild -->

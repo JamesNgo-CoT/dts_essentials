@@ -1,3 +1,6 @@
+/* global _ Backbone */
+
+/* exported LoginModel */
 const LoginModel = Backbone.Model.extend({
 
   // PROPERTY DEFINITION
@@ -9,8 +12,6 @@ const LoginModel = Backbone.Model.extend({
   localStorageValue: function() {
     return this.get('sid');
   },
-
-  // EVENT DEFINITION
 
   // METHOD DEFINITION
 
@@ -32,18 +33,18 @@ const LoginModel = Backbone.Model.extend({
     return this.has('sid');
   },
 
-  login: function (name, pwd) {
+  login: function (user, pwd) {
     return new Promise((resolve, reject) => {
       $.ajax({
         contentType: 'application/json',
         data: JSON.stringify({
           app: this.app,
-          user: name,
+          user: user,
           pwd: pwd
         }),
         method: 'POST',
         url: _.result(this, 'url')
-      }).then((data, textStatus, jqXHR) => {
+      }).then((data) => {
         this.set(data);
         localStorage.setItem(_.result(this, 'localStorageKey'), _.result(this, 'localStorageValue'));
         resolve(data);
@@ -54,7 +55,7 @@ const LoginModel = Backbone.Model.extend({
   },
 
   logout: function () {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.clear();
       localStorage.removeItem(_.result(this, 'localStorageKey'));
       resolve();
@@ -67,7 +68,7 @@ const LoginModel = Backbone.Model.extend({
         $.ajax({
           method: 'GET',
           url: `${_.result(this, 'url')}('${this.get('sid')}')`
-        }).then((data, textStatus, jqXHR) => {
+        }).then((data) => {
           this.set(data);
           localStorage.setItem(_.result(this, 'localStorageKey'), _.result(this, 'localStorageValue'));
           resolve(data);
@@ -82,12 +83,8 @@ const LoginModel = Backbone.Model.extend({
 
   // INITIALIZE DEFINITION
 
-  initialize: function (attributes, options = {}) {
+  initialize: function () {
     this.app = this.get('app') || 'CoT';
-
-    if (options.url) {
-      this.url = options.url;
-    }
 
     var sid = localStorage.getItem(_.result(this, 'localStorageKey'));
     if (sid) {
