@@ -1,21 +1,57 @@
-// The main javascript file for dts_essentials.
-// IMPORTANT:
-// Any resources from this project should be referenced using SRC_PATH preprocessor var
-// Ex: let myImage = '/*@echo SRC_PATH*//img/sample.jpg';
+/* global Backbone BaseRouter cot_app LoginButtonView LoginModel */
 
 $(function () {
-  if (window['cot_app']) { //the code in this 'if' block should be deleted for embedded apps
-    const app = new cot_app("dts_essentials",{
-      hasContentTop: false,
-      hasContentBottom: false,
-      hasContentRight: false,
-      hasContentLeft: false,
-      searchcontext: 'INTRA'
-    });
 
-    app.setBreadcrumb([
-      {"name": "dts_essentials", "link": "#"}
-    ]).render();
-  }
-  let container = $('#dts_essentials_container');
+  // COT APP
+  const app = new cot_app('/* @echo APP_NAME */', {
+    hasContentTop: false,
+    hasContentBottom: false,
+    hasContentRight: false,
+    hasContentLeft: false,
+    searchcontext: 'INTRA'
+  });
+
+  app.setBreadcrumb([{
+    'name': '/* @echo APP_NAME */',
+    'link': '#'
+  }], true);
+
+  app.render();
+
+  // CONTAINER
+  let $container = $('#dts_essentials_container');
+
+  // LOGIN
+  const loginModel = new (LoginModel.extend({
+    url: 'https://was-intra-sit.toronto.ca/c3api_auth/v2/AuthService.svc/AuthSet'
+  }))();
+
+  const loginButtonView = new (LoginButtonView.extend({}))({ model: loginModel });
+  loginButtonView.$el.appendTo($container);
+  loginButtonView.render();
+
+  // ROUTER
+  const router = new (BaseRouter.extend({
+    homeFragment: 'home',
+
+    routes: {
+      'login': function(query) {
+        console.log('LOGIN', query)
+      },
+
+      'logout': function(query) {
+        console.log('LOGIN', query)
+      },
+
+      'home': function(query) {
+        console.log('HOME', query);
+      },
+
+      '*default': 'defautRoute'
+    }
+  }))();
+
+  loginButtonView.listenTo(router, 'route', loginButtonView.render);
+
+  Backbone.history.start();
 });
