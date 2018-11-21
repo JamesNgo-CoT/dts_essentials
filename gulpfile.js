@@ -8,6 +8,9 @@ core.embeddedApp.createTasks(gulp, {
   environmentOverride: null,
   deploymentPath: '',
   preprocessorContext: {
+
+    APP_NAME: 'DTS Essentials',
+
     local: {},
     dev: {},
     qa: {},
